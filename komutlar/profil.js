@@ -24,9 +24,7 @@ if (message.author.id === ayarlar.sahip) {
       "11": "Kasım",
       "12": "Aralık"
     }
-    moment.locale("tr")
-    var duration = moment.duration(client.uptime).format(" D [gün] H [saat] m [dakika] s [saniye]")
-  
+    moment.locale("tr")  
   
   let embed2
   let üye = message.mentions.users.first() || client.users.cache.get(args[0])
