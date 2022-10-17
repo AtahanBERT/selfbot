@@ -12,15 +12,8 @@ require('./util/etkinlikLoader.js')(client);
 const ms = require('ms');
 const { Client, Util } = require('discord.js-selfbot-v13');
 const app = express()
+const http = require('http');
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;  
-    }
-  }   
-}  
 
 [process.env.mtoken1,process.env.mtoken2,process.env.mtoken3,process.env.mtoken4,process.env.mtoken5].forEach((token, i) => {
   const Dc = require("discord.js")
@@ -31,8 +24,6 @@ function sleep(milliseconds) {
   client.user.setPresence({ activity: { name: `${prefix[i]}yardım`, type: "PLAYING"}})})
   client.login(token).then(() => console.log(`${client.user.tag} Aktif!`)).catch(() => console.error(`${token} Tokeni aktif edilemedi!`));
 })
-const http = require('http');
-
 
 app.get("/", (request, response) => { 
   response.send(`Bot Aktif | Discord: https://discord.gg/rP74PaPKVX | İletişim Veya Uptime Etmek İçin Discordumuza Gelebilirsiniz.`)
