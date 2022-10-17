@@ -144,7 +144,7 @@ message.reply({content:`Prefix: \`${db.fetch(`prefix`)}\``})
 })
 
 client.login(process.env.token);
-//client2.login(process.env.token2)
+client2.login(process.env.token2)
 
 client.on('messageCreate', async message => {
 let afk = await db.fetch(`afk`)
