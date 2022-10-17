@@ -9,9 +9,9 @@ if (message.author.id === ayarlar.sahip) {
 
 if (client.user.nitroType !== "NITRO_BOOST" & client.user.nitroType !== "NITRO_CLASSIC") return message.reply(`${basarisiz} ${message.author}, Bu komut için \`NITRO CLASSIC\` veya \`NITRO BOOST\` a ihtiyacın var.`).then(x => setTimeout(() => {x.delete()}, 5000))
 if (!client.password & !process.env.password) return message.reply({content:`${basarisiz} ${message.author}, Lütfen projeye girip şifrenizi belirtiniz.`}).then(x => setTimeout(() => {x.delete()}, 5000))
-if (isNaN(args[0])) return message.reply({content:`${basarisiz} ${message.author}, Yanlış kullanım doğrusu -> ${ayarlar.prefix}etiket <etiket> şeklinde yazınız.`}).then(x => setTimeout(() => {x.delete()}, 5000))
+if (isNaN(args[0])) return message.reply({content:`${basarisiz} ${message.author}, Yanlış kullanım doğrusu -> **${await db.fetch("prefix") || ayarlar.prefix}etiket <sayı>** şeklinde yazınız.`}).then(x => setTimeout(() => {x.delete()}, 5000))
 if (args[0] === client.user.discriminator) return message.reply({content:`${basarisiz} ${message.author}, Belirtilen etiket önceki ile aynı olamaz.`}).then(x => setTimeout(() => {x.delete()}, 5000))
-if (args[0] > 4 || args[0] <)
+if (args[0].length !== 4) return message.reply({content:`${basarisiz} ${message.author}, Belirtilen etiketin uzunluğu 4 olmadılıdır.`}).then(x => setTimeout(() => {x.delete()}, 5000))
   
 try {
  await client.user.setDiscriminator(args[0], client.password || process.env.password).then(() => {
