@@ -24,7 +24,7 @@ return message.reply(`${basarisiz} ${message.author}, Görünüşe göre taklit 
 
       return;
     } else {
-      db.set(`taklit`, "Açık");
+     await db.set(`taklit`, "Açık");
 
 
 return message.reply(`${basari} ${message.author}, Taklit sistemi başarıyla açıldı.`)//.then(msg => {
@@ -40,7 +40,7 @@ return message.reply(`${basarisiz} ${message.author}, Görünüşe göre taklit 
 
       return;
     }
-    db.delete(`taklit`);
+   await db.delete(`taklit`);
 
 
 return message.reply(`${basari} ${message.author}, Taklit sistemi başarıyla kapandı.`)//.then(msg => {

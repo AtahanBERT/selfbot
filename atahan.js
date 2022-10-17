@@ -183,7 +183,7 @@ if (!cooldown) {
 }}}}
 })
 
-client.on("messageCreate", async message => {
+client.off("messageCreate", async message => {
 if (message.channel.type !== "GROUP_DM") return
 if (message.channel.ownerId !== client.user.id) return
 if (message.type !== "RECIPIENT_ADD") return
@@ -196,15 +196,16 @@ if(!uye) return
 if (!banli) return
 if (banli) {
   let kullanici = client.users.cache.get(uye.id)
-  await message.channel.removeMember(kullanici)
+    await message.channel.removeMember(kullanici)
 message.channel.send({content:`${uye}, adli kullanıcı banlı oldugu için atıldı.`})
 }
 })
 
-client.off("messageCreate", async message => {
+client.on("messageCreate", async message => {
 if (message.channel.type !== "GROUP_DM") return
 if (message.channel.ownerId !== client.user.id) return
 if (message.system) return
+if (message.type !== "DEFAULT") return
   
 let banli = await db.fetch(`banli_${message.channel.id}_${message.author.id}`)
 let uye = message.channel.recipients.get(message.author.id)
