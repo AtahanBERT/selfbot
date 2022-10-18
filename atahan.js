@@ -14,17 +14,6 @@ const { Client, Util } = require('discord.js-selfbot-v13');
 const app = express()
 const http = require('http');
 
-
-[process.env.mtoken1,process.env.mtoken2,process.env.mtoken3,process.env.mtoken4,process.env.mtoken5].forEach((token, i) => {
-  const Dc = require("discord.js")
-  const client = new Dc.Client()
-  
-  const prefix = ["e?","e!","e.","e,","e-"]
-  client.on("ready", async () => {
-  client.user.setPresence({ activity: { name: `${prefix[i]}yardım`, type: "PLAYING"}})})
-  client.login(token).then(() => console.log(`${client.user.tag} Aktif!`)).catch(() => console.error(`${token} Tokeni aktif edilemedi!`));
-})
-
 app.get("/", (request, response) => { 
   response.send(`Bot Aktif | Discord: https://discord.gg/rP74PaPKVX | İletişim Veya Uptime Etmek İçin Discordumuza Gelebilirsiniz.`)
   console.log(Date.now() + " Ping tamamdır.");
