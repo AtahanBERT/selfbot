@@ -98,7 +98,7 @@ client.unload = command => {
     });
 }
 
-client2.on("ready", async() => {
+client2.off("ready", async() => {
 
  let kanal =  client2.channels.cache.get("884886587568181298")
  
