@@ -133,7 +133,7 @@ message.reply({content:`Prefix: \`${db.fetch(`prefix`)}\``})
 })
 
 client.login(process.env.token);
-client2.login(process.env.token2)
+//client2.login(process.env.token2)
 
 client.on('messageCreate', async message => {
 let afk = await db.fetch(`afk`)
@@ -150,11 +150,11 @@ let cooldown = await db.fetch(`spamcıdm_${message.author.id}`)
 
 if (cooldown === "spamcı oç") return
 if (!cooldown) {
-  message.reply({content:`${client.user}, <t:${süre}:R> **${sebep}** sebebinden AFK moduna girdi lütfen rahatsız etme.`}).then(x => setTimeout(() => {x.delete()}, 30000))
+  message.reply({content:`${client.user}, <t:${süre}:R> **${sebep}** sebebinden AFK moduna girdi lütfen rahatsız etme.`}).then(x => setTimeout(() => {x.delete()}, 10000))
   await db.set(`spamcıdm_${message.author.id}`, "spamcı oç")
   setTimeout(() => {db.delete(`spamcıdm_${message.channel.id}`)}, 1200000)
 }} else if (message.type === "CALL") {
-    message.channel.send({content:`${client.user}, <t:${süre}:R> **${sebep}** sebebinden AFK moduna girdi lütfen rahatsız etme.`}).then(x => setTimeout(() => {x.delete()}, 30000))
+    message.channel.send({content:`${client.user}, <t:${süre}:R> **${sebep}** sebebinden AFK moduna girdi lütfen rahatsız etme.`}).then(x => setTimeout(() => {x.delete()}, 10000))
   await db.set(`spamcıarama_${message.author.id}`, "spamcı oç")
   setTimeout(() => {db.delete(`spamcıarama_${message.channel.id}`)}, 1200000)
 
@@ -166,7 +166,7 @@ let cooldown = await db.fetch(`spamcısu_${message.author.id}`)
 
 if (cooldown === "spamcı oç") return
 if (!cooldown) {
-  message.reply({content:`${client.user}, <t:${süre}:R> **${sebep}** sebebinden AFK moduna girdi lütfen rahatsız etme.`}).then(x => setTimeout(() => {x.delete()}, 30000))
+  message.reply({content:`${client.user}, <t:${süre}:R> **${sebep}** sebebinden AFK moduna girdi lütfen rahatsız etme.`}).then(x => setTimeout(() => {x.delete()}, 10000))
   await db.set(`spamcısu_${message.author.id}`, "spamcı oç")
   setTimeout(() => {db.delete(`spamcısu_${message.author.id}`)}, 1200000)
 }}}}
