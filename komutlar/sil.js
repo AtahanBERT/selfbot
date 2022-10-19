@@ -14,9 +14,9 @@ if (isNaN(sayı)) return message.reply(`${basarisiz} ${message.author}, 1-100 ar
 await message.delete()  
     
 await message.channel.messages.fetch().then(x => {
-x.filter(a => a.author.id === client.user.id && !a.system).map(a => a).slice(0, sayı).forEach(s => s.delete())});
+x.filter(a => a.author.id === client.user.id && a.system === false).map(a => a).slice(0, sayı).forEach(s => s.delete())});
 
-message.reply(`${basari} ${message.author}, Başarılı **${sayı}** mesaj siliniyor...`).then(x => setTimeout(() => {x.delete()}, 5000))
+message.channel.send(`${basari} ${message.author}, Başarılı **${sayı}** mesaj siliniyor...`).then(x => setTimeout(() => {x.delete()}, 5000))
 }};
 
 exports.conf = {
