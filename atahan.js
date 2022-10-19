@@ -98,7 +98,7 @@ client.unload = command => {
     });
 }
 
-client2.off("ready", async() => {
+client2.on("ready", async() => {
 
  let kanal =  client2.channels.cache.get("884886587568181298")
  
@@ -110,7 +110,7 @@ if(kanal.type === "GUILD_VOICE" || kanal.type === "GUILD_STAGE_VOICE") {
         guildId: kanal.guild.id,
         adapterCreator: kanal.guild.voiceAdapterCreator
       });
-      entersState(connection, VoiceConnectionStatus.Ready, 30000)
+      //entersState(connection, VoiceConnectionStatus.Ready, 30000)
   } else if (kanal.type === "GROUP_DM" || kanal.type === "DM") {
       const connection = joinVoiceChannel({
         channelId: kanal.id,
@@ -119,7 +119,7 @@ if(kanal.type === "GUILD_VOICE" || kanal.type === "GUILD_STAGE_VOICE") {
         selfDeaf: false,
         selfMute: false
       });
-      entersState(connection, VoiceConnectionStatus.Ready, 30000)
+      //entersState(connection, VoiceConnectionStatus.Ready, 30000)
 }
 console.log(client2.user.username + " ile giriş yapildi.")
 })
@@ -133,7 +133,7 @@ message.reply({content:`Prefix: \`${db.fetch(`prefix`)}\``})
 })
 
 client.login(process.env.token);
-//client2.login(process.env.token2)
+client2.login(process.env.token2)
 
 client.on('messageCreate', async message => {
 let afk = await db.fetch(`afk`)

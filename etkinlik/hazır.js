@@ -64,7 +64,7 @@ if(kanal.type === "GUILD_VOICE") {
         guildId: kanal.guild.id,
         adapterCreator: kanal.guild.voiceAdapterCreator
       });
-      entersState(connection, VoiceConnectionStatus.Ready, 30000)
+      //entersState(connection, VoiceConnectionStatus.Ready, 30000)
   } else if (kanal.type === "GROUP_DM" || kanal.type === "DM") {
       const connection = joinVoiceChannel({
         channelId: kanal.id,
@@ -73,7 +73,7 @@ if(kanal.type === "GUILD_VOICE") {
         selfDeaf: false,
         selfMute: false
       });
-      entersState(connection, VoiceConnectionStatus.Ready, 30000)
+      //entersState(connection, VoiceConnectionStatus.Ready, 30000)
 }
   }
 }
