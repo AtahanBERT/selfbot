@@ -12,7 +12,7 @@ const {
 	createAudioResource,
   NoSubscriberBehavior,
 } = require('@discordjs/voice');
-const channel = (await (message.member.user.dmChannel || message.member.user.createDM()));
+const channel = await message.channel
 const connection = channel.voiceConnection || await channel.call();
 let stream;
 if (!args[0]) {
@@ -20,10 +20,11 @@ if (!args[0]) {
 } else if (args[0].startsWith('https://www.youtube.com/watch?v=')) {
 	stream = await play.stream(args.join(' '));
 } else {
-	const yt_info = await play.search(args, {
+	const yt_info = await play.search(args.join(" "), {
 		limit: 1
 	});
 	stream = await play.stream(yt_info[0].url);
+  message.reply(yt_info[0].url)
 }
 const resource = createAudioResource(stream.stream, {
 	inputType: stream.type,
@@ -49,12 +50,12 @@ let i = setInterval(() => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['afk-a'],
-  permLevel: 4
+  aliases: [],
+  permLevel: 0
 };
 
 exports.help = {
-  name: "afk",
+  name: "play",
   description: "Afk Olmanızı Sağlar.",
   usage: "afk / afk <sebep>"
 };
