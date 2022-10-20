@@ -11,6 +11,8 @@ let kullanici = message.mentions.users.first() || client.users.cache.get(args[0]
 if (!kullanici) return message.reply(`${basarisiz} ${message.author}, Bir kullanıcı belirtmelisin.`).then(x => setTimeout(() => {x.delete()}, 5000));
 if (!args.slice(1).join(" ")) return message.reply(`${basarisiz} ${message.author}, Mesaj belirtmelisin.`).then(x => setTimeout(() => {x.delete()}, 5000));
 
+  await message.delete()
+  
   let engel = client.relationships.cache.get(kullanici.id)
 
 if (engel === 2) {
@@ -28,7 +30,7 @@ if (engel === 2) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['blocksend','engelmesaj'],
+  aliases: ['blocksend','engelmesaj','sendblock'],
   permLevel: 4
 };
 
