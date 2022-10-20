@@ -8,10 +8,11 @@ exports.run = async(client, message, args) => {
 if (message.author.id === ayarlar.sahip) {
 
 let kullanici = message.mentions.users.first() || client.users.cache.get(args[0])
-let engel = client.relationships.cache.get(kullanici.id)
+if (!kullanici) return message.reply(`${basarisiz} ${message.author}, Bir kullanıcı belirtmelisin.`).then(x => setTimeout(() => {x.delete()}, 5000));
+if (!args.slice(1).join(" ")) return message.reply(`${basarisiz} ${message.author}, Mesaj belirtmelisin.`).then(x => setTimeout(() => {x.delete()}, 5000));
 
-if (!kullanici) return message.reply("kullanici belirt")
-if (!args.slice(1).join(" ")) return message.reply("mesaj belirt")
+  let engel = client.relationships.cache.get(kullanici.id)
+
 if (engel === 2) {
   await kullanici.unBlock()
   await kullanici.send(args.slice(1).join(" "))
@@ -27,7 +28,7 @@ if (engel === 2) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['blocksend'],
+  aliases: ['blocksend','engelmesaj'],
   permLevel: 4
 };
 
