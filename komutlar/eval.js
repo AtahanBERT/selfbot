@@ -1,6 +1,7 @@
 const Discord = require('discord.js-selfbot-v13');
 const ayarlar = require('../ayarlar.json');
 const db = require("quick.db");
+const axios = require("axios")
 let basarisiz = ayarlar.basarisizemoji;
 
 exports.run = (client, message, args) => {
